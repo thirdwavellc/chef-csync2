@@ -1,0 +1,14 @@
+nossl * *;
+group <%= @group %>
+{
+<% @hosts.each do |host| %>
+      <% if host == @group %>
+        host <%= host %>;
+      <% else %>
+        host (<%= host %>);
+      <% end %>
+<% end %>
+        key /etc/csync2.key;
+        include /var/www/bedrock/shared/web/app/uploads;
+        auto younger;
+}

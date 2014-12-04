@@ -1,0 +1,10 @@
+nossl * *;
+group bedrock
+{
+<% @hosts.each do |host| %>
+        host <%= host %>;
+<% end %>
+        key /etc/csync2.key;
+        include /var/www/bedrock/shared/web/app/uploads;
+        auto younger;
+}
