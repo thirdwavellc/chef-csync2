@@ -7,7 +7,7 @@
 #
 #
 
-define :csync2_config, :hosts => [], :template_cookbook => 'csync2' do
+define :csync2_config, hosts: [], template_cookbook: 'csync2' do
   hosts = params[:hosts]
   hostnames = hosts.map { |h| h[:name] }
   template_cookbook = params[:template_cookbook]
