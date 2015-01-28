@@ -1,10 +1,12 @@
 nossl * *;
-group bedrock
+group wordpress
 {
 <% @hosts.each do |host| %>
         host <%= host %>;
 <% end %>
-        key /etc/csync2.key;
-        include /var/www/bedrock/shared/web/app/uploads;
+        key <%= @key_path %>;
+<% @synced_dirs.each do |dir| %>
+        include <%= dir %>;
+<% end %>
         auto younger;
 }

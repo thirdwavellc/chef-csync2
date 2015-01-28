@@ -8,7 +8,9 @@ group <%= @group %>
         host (<%= host %>);
       <% end %>
 <% end %>
-        key /etc/csync2.key;
-        include /var/www/bedrock/shared/web/app/uploads;
+        key <%= @key_path %>;
+<% @synced_dirs.each do |dir| %>
+        include <%= dir %>;
+<% end %>
         auto younger;
 }
