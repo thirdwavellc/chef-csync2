@@ -1,3 +1,6 @@
 AllCops:
   Exclude:
     - 'metadata.rb'
+
+Documentation:
+  Enabled: false

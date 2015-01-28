@@ -2,7 +2,7 @@ require 'chef/resource/lwrp_base'
 
 class Chef
   class Resource
-    class Csync2Config< Chef::Resource::LWRPBase
+    class Csync2Config < Chef::Resource::LWRPBase
       self.resource_name = :csync2_config
       actions :create
       default_action :create
