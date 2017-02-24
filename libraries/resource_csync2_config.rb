@@ -31,6 +31,7 @@ class Chef
       attribute :hosts, kind_of: Array, required: true
       attribute :synced_dirs, kind_of: Array, required: true
       attribute :key_path, kind_of: String, required: true
+      attribute :lock_timeout, kind_of: Integer, default: 60
 
       def hostnames
         hosts.map { |h| h[:name] }

@@ -36,7 +36,8 @@ class Chef
           variables(
             hosts: new_resource.hostnames,
             synced_dirs: new_resource.synced_dirs,
-            key_path: new_resource.key_path
+            key_path: new_resource.key_path,
+            lock_timeout: new_resource.lock_timeout
           )
           action :create
         end
@@ -49,7 +50,8 @@ class Chef
               group: host,
               hosts: new_resource.hostnames,
               synced_dirs: new_resource.synced_dirs,
-              key_path: new_resource.key_path
+              key_path: new_resource.key_path,
+              lock_timeout: new_resource.lock_timeout
             )
             action :create
           end

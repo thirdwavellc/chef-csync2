@@ -1,4 +1,5 @@
 nossl * *;
+lock-timeout <%= @lock_timeout %>;
 group wordpress
 {
 <% @hosts.each do |host| %>
