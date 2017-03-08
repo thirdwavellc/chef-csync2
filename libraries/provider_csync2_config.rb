@@ -30,28 +30,15 @@ class Chef
       end
 
       action :create do
-        template new_resource.path do
-          cookbook 'csync2'
-          source 'csync2.cfg.erb'
-          variables(
-            hosts: new_resource.hostnames,
-            synced_dirs: new_resource.synced_dirs,
-            key_path: new_resource.key_path,
-            lock_timeout: new_resource.lock_timeout
-          )
-          action :create
-        end
-
-        new_resource.hostnames.each do |host|
-          template new_resource.host_config(host) do
+        new_resource.synced_dirs.each do |dir|
+          template new_resource.synced_dir_config_path(dir) do
             cookbook 'csync2'
-            source 'csync2_node.cfg.erb'
+            source 'csync2_dir.cfg.erb'
             variables(
-              group: host,
+              group: dir[:name],
               hosts: new_resource.hostnames,
-              synced_dirs: new_resource.synced_dirs,
-              key_path: new_resource.key_path,
-              lock_timeout: new_resource.lock_timeout
+              synced_dir: dir[:path],
+              key_path: new_resource.key_path
             )
             action :create
           end

@@ -1,13 +1,10 @@
 nossl * *;
-lock-timeout <%= @lock_timeout %>;
-group wordpress
+group <%= @group %>
 {
 <% @hosts.each do |host| %>
         host <%= host %>;
 <% end %>
         key <%= @key_path %>;
-<% @synced_dirs.each do |dir| %>
-        include <%= dir %>;
-<% end %>
+        include <%= @synced_dir %>;
         auto younger;
 }

@@ -31,14 +31,13 @@ class Chef
       attribute :hosts, kind_of: Array, required: true
       attribute :synced_dirs, kind_of: Array, required: true
       attribute :key_path, kind_of: String, required: true
-      attribute :lock_timeout, kind_of: Integer, default: 60
 
       def hostnames
         hosts.map { |h| h[:name] }
       end
 
-      def host_config(host)
-        path.gsub('csync2', "csync2_#{host}")
+      def synced_dir_config_path(dir)
+        path.gsub('csync2', "csync2_#{dir[:name]}")
       end
     end
   end
