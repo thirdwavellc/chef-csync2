@@ -24,6 +24,7 @@ class Chef
   class Provider
     class Csync2Config < Chef::Provider::LWRPBase
       use_inline_resources if defined?(use_inline_resources)
+      provides :csync2_config
 
       def whyrun_supported?
         true
